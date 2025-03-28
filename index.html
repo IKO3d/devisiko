@@ -5,11 +5,11 @@
   <title>Demande de devis impression 3D</title>
   <meta name="description" content="Demandez un devis pour votre impression 3D à la demande. Téléversez votre fichier STL et recevez un tarif personnalisé." />
 
-  <!-- Bon SDK EmailJS version 2 -->
+  <!-- SDK EmailJS compatible GitHub Pages -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
   <script>
     (function() {
-      emailjs.init("27iodv7KMIYgP-rUM");
+      emailjs.init("27iodv7KMIYgP-rUM"); // Ta clé publique
     })();
   </script>
 
@@ -59,7 +59,7 @@
           filename: fichier.name
         };
 
-        emailjs.send("service_cub2bpl", "template_4exwh14", params)
+        emailjs.send("service_cub2bpl", "template_qgun5qk", params)
           .then(() => alert("✅ Demande envoyée avec succès !"))
           .catch((err) => alert("❌ Erreur lors de l'envoi : " + err.text));
       };
