@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <title>Demande de devis impression 3D</title>
   <meta name="description" content="Demandez un devis pour votre impression 3D à la demande. Téléversez votre fichier STL et recevez un tarif personnalisé." />
-  <script type="module">
-    import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
-    emailjs.init("27iodv7KMIYgP-rUM"); // ta clé publique
-    window.emailjs = emailjs; // exposer globalement
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("27iodv7KMIYgP-rUM"); // ta clé publique EmailJS
+    })();
   </script>
   <style>
     body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
@@ -35,7 +36,7 @@
   </form>
 
   <script>
-    document.getElementById('devis-form').addEventListener('submit', async function(e) {
+    document.getElementById('devis-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const fichier = document.getElementById('fichier3d').files[0];
@@ -55,7 +56,7 @@
           filename: fichier.name
         };
 
-        window.emailjs.send("service_cub2bpl", "template_4exwh14", params)
+        emailjs.send("service_cub2bpl", "template_4exwh14", params)
           .then(() => alert("✅ Demande envoyée avec succès !"))
           .catch((err) => alert("❌ Erreur lors de l'envoi : " + err.text));
       };
